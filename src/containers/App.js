@@ -40,16 +40,18 @@ class App extends Component {
     })
 
     if (isPending === true) {
-      return <h1>Loading...</h1>
+      return <h1>Loading</h1>
     }
     return (
       <div className='tc' >
         <Header />
         <SearchBox searchChange={onSearchChange} />
         <Scroll>
-          <ErrorBoundry>
-            <CardList robots={filteredRobots} />
-          </ErrorBoundry>
+          {isPending ? <h1>Loading</h1> :
+            <ErrorBoundry>
+              <CardList robots={filteredRobots} />
+            </ErrorBoundry>
+          }
         </Scroll>
       </div>
     )
