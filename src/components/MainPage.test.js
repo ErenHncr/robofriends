@@ -18,7 +18,7 @@ it('renders MainPage without crashing', () => {
 })
 
 it('filters robots correctly', () => {
-  const mockProps2 = {
+  const mockProps = {
     onRequestRobots: jest.fn(),
     robots: [
       {
@@ -30,8 +30,8 @@ it('filters robots correctly', () => {
     searchField: 'john',
     isPending: false
   }
-  const wrapper2 = shallow(<MainPage {...mockProps2} />)
-  expect(wrapper2.instance().filteredRobots()).toEqual([
+  wrapper = shallow(<MainPage {...mockProps} />)
+  expect(wrapper.instance().filteredRobots()).toEqual([
     {
       id: 3,
       name: 'John',
@@ -41,7 +41,7 @@ it('filters robots correctly', () => {
 })
 
 it('filters robots correctly2', () => {
-  const mockProps3 = {
+  const mockProps = {
     onRequestRobots: jest.fn(),
     robots: [
       {
@@ -54,6 +54,6 @@ it('filters robots correctly2', () => {
     isPending: false
   }
   const filteredRobots = [];
-  const wrapper3 = shallow(<MainPage {...mockProps3} />)
-  expect(wrapper3.instance().filteredRobots()).toEqual(filteredRobots);
+  wrapper = shallow(<MainPage {...mockProps} />)
+  expect(wrapper.instance().filteredRobots()).toEqual(filteredRobots);
 })
