@@ -43,6 +43,7 @@ it('handles requesting robots API', async () => {
   return store.dispatch(actions.requestRobots(test = true))
     .then(() => {
       // return of async actions
+      console.log(store.getActions()[1]);
       expect(store.getActions()).toEqual(expectedActions);
     });
 

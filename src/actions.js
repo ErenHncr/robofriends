@@ -13,12 +13,13 @@ export const setSearchField = (text) => {
   }
 }
 // higher order function
-export const requestRobots = () => (dispatch, test = false) => {
+export const requestRobots = (test = false) => (dispatch) => {
   dispatch({ type: REQUEST_ROBOTS_PENDING });
   return fetch('https://jsonplaceholder.typicode.com/users')
     .then((response) => response.json())
     .then(data => {
       if (test) {
+        console.log(test)
         dispatch({ type: REQUEST_ROBOTS_SUCCESS });
       }
       else {
