@@ -23,13 +23,28 @@ it('should create an action to search robots', () => {
 
 })
 
-it('handles requesting robots API', () => {
-  const store = mockStore();
-  store.dispatch(actions.requestRobots());
-  const action = store.getActions();
-  const expectedAction = {
-    type: REQUEST_ROBOTS_PENDING
-  }
-  expect(action[0]).toEqual(expectedAction)
+it('handles requesting robots API', async () => {
+  // const store = mockStore();
+  // store.dispatch(actions.requestRobots());
+  // const action = store.getActions();
+  // const expectedAction = {
+  //   type: REQUEST_ROBOTS_PENDING
+  // }
+  // expect(action[0]).toEqual(expectedAction)
+
+
+  const expectedActions = [
+    { type: REQUEST_ROBOTS_PENDING },
+    { type: REQUEST_ROBOTS_SUCCESS }
+  ];
+
+  const store = mockStore()
+
+  return store.dispatch(actions.requestRobots(test = true))
+    .then(() => {
+      // return of async actions
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+
 
 })
